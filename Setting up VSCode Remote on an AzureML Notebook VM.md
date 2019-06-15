@@ -2,7 +2,7 @@
 
 
 In the AzureML Workspace in the Azure Portal, go to configuration page of the compute target associated with you Notebook VM and find the ssh settings. 
-![](img/vm-ssh-config.png)
+![](img/vm_ssh_config.png)
 
 Save private key to the ~/.ssh/ directory on your local computer
 
@@ -34,4 +34,6 @@ Here some details on the fields:
 - `User`: this needs to be `azureuser`
 - `IdentityFile`: should point to the file where you saved the privat key
 
+Next install VS Code Insiders from here: https://code.visualstudio.com/insiders/ and then click on the Remote-SSH icon on the left to pick the SSH host configuration you just created.
 
+![](img/vscode_connect.gif)
