@@ -1,7 +1,7 @@
 # Setting up VSCode Remote on an AzureML Notebook VM
 
 
-In the AzureML Workspace in the Azure Portal, go to configuration page of the compute target associated with your Notebook VM and find the ssh settings. 
+In the AzureML Workspace in the Azure Portal, go to configuration page of the compute target associated with your Notebook VM and find the IP Adress, ssh port, and ssh private key at the bottom: 
 ![](img/vm_ssh_config.png)
 
 Save private key to the ~/.ssh/ directory on your local computer; for instance open and editor for a new file and paste the key in:
@@ -24,6 +24,7 @@ Open the file ~/.ssh/config in an editor and add a new entry:
 
     Host danielsctest2
         HostName 13.69.56.51
+        Port 22
         User azureuser
         IdentityFile ~/.ssh/id_danielsctest_rsa  
    
@@ -31,6 +32,7 @@ Here some details on the fields:
 
 - `Host`: use whatever shorthand you like for the VM
 - `HostName`: This is the IP address of the VM pulled from the above configuration page
+- `Port`: This is the port shown on the above configuration page.
 - `User`: this needs to be `azureuser`
 - `IdentityFile`: should point to the file where you saved the privat key
 
