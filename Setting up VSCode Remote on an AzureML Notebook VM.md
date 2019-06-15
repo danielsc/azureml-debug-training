@@ -1,12 +1,12 @@
 # Setting up VSCode Remote on an AzureML Notebook VM
 
 
-In the AzureML Workspace in the Azure Portal, go to configuration page of the compute target associated with you Notebook VM and find the ssh settings. 
+In the AzureML Workspace in the Azure Portal, go to configuration page of the compute target associated with your Notebook VM and find the ssh settings. 
 ![](img/vm_ssh_config.png)
 
-Save private key to the ~/.ssh/ directory on your local computer
+Save private key to the ~/.ssh/ directory on your local computer; for instance open and editor and paste the key in:
 
-    vi id_danielsc_pmworkshop
+    vi ~/.ssh/id_danielsctest_rsa
     
 The private key will look somewhat like this
     
@@ -17,10 +17,10 @@ The private key will look somewhat like this
 
 Change permissions on file to make sure only you can read the file (not sure if this is needed on Windows)
 
-    chmod 600 id_danielsc_pmworkshop
+    chmod 600 ~/.ssh/id_danielsctest_rsa
     
 
-Edit the file ~/.ssh/config and add a new entry. 
+Open the file ~/.ssh/config in an editor and add a new entry:
 
     Host danielsctest2
         HostName 13.69.56.51
@@ -30,10 +30,12 @@ Edit the file ~/.ssh/config and add a new entry.
 Here some details on the fields:
 
 - `Host`: use whatever shorthand you like for the VM
-- `HostName`: This is teh IP address of the VM pulled from the above configuration page
+- `HostName`: This is the IP address of the VM pulled from the above configuration page
 - `User`: this needs to be `azureuser`
 - `IdentityFile`: should point to the file where you saved the privat key
 
-Next install VS Code Insiders from here: https://code.visualstudio.com/insiders/ and then click on the Remote-SSH icon on the left to pick the SSH host configuration you just created.
+Next install VS Code Insiders from here: https://code.visualstudio.com/insiders/ and then click on the Remote-SSH icon on the left to show your SSH configurations, then right-click on the SSH host configuration you just created, and select 'Connect to Host in current Window'.
+
+From here on, you are entirely working on the Notebook VM and you can now edit, debug, use git, use extensions, etc. -- just like you can with your local VSCode.
 
 ![](img/vscode_connect.gif)
