@@ -4,7 +4,7 @@
 In the AzureML Workspace in the Azure Portal, go to configuration page of the compute target associated with your Notebook VM and find the ssh settings. 
 ![](img/vm_ssh_config.png)
 
-Save private key to the ~/.ssh/ directory on your local computer; for instance open and editor and paste the key in:
+Save private key to the ~/.ssh/ directory on your local computer; for instance open and editor for a new file and paste the key in:
 
     vi ~/.ssh/id_danielsctest_rsa
     
