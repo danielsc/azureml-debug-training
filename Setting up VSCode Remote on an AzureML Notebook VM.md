@@ -36,6 +36,31 @@ Here some details on the fields:
 - `User`: this needs to be `azureuser`
 - `IdentityFile`: should point to the file where you saved the privat key
 
+Now you should be able to ssh to your Notebook VM using the shorthand you used above.
+
+```console
+    MININT-LI90F99:git danielsc$ ssh danielsctest2
+    Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.15.0-1041-azure x86_64)
+
+    94 packages can be updated.
+    0 updates are security updates.
+
+    New release '18.04.2 LTS' available.
+    Run 'do-release-upgrade' to upgrade to it.
+
+
+    *** System restart required ***
+    **********************************************************************
+    * Welcome to the Linux Data Science Virtual Machine on Azure!        *
+    *                                                                    *
+    * For more information on available tools and features,              *
+    * visit http://aka.ms/dsvm/discover.                                 *
+    **********************************************************************
+
+    Last login: Sun Jun 16 18:03:28 2019 from 172.58.43.244
+    azureuser@danielsctestc7e12521ac:~$ 
+```
+
 Next install VS Code from here: https://code.visualstudio.com/ (Insiders is no longer required) and then install the Remote SSH Extension from here: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh.
 
 Now, click on the Remote-SSH icon on the left to show your SSH configurations, then right-click on the SSH host configuration you just created, and select 'Connect to Host in current Window'.
