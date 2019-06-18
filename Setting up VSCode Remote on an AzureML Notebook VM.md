@@ -36,7 +36,7 @@ Here some details on the fields:
 - `User`: this needs to be `azureuser`
 - `IdentityFile`: should point to the file where you saved the privat key
 
-Next install VS Code from here: https://code.visualstudio.com/ (Insider is no longer required) and then install the Remote SSH Extension from here: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh.
+Next install VS Code from here: https://code.visualstudio.com/ (Insiders is no longer required) and then install the Remote SSH Extension from here: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh.
 
 Now, click on the Remote-SSH icon on the left to show your SSH configurations, then right-click on the SSH host configuration you just created, and select 'Connect to Host in current Window'.
 
