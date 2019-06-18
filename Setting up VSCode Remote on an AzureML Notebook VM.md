@@ -38,7 +38,7 @@ Here some details on the fields:
 
 Now you should be able to ssh to your Notebook VM using the shorthand you used above.
 
-```console
+```
     MININT-LI90F99:git danielsc$ ssh danielsctest2
     Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.15.0-1041-azure x86_64)
 
