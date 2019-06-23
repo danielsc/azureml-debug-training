@@ -11,9 +11,11 @@ In the AzureML Workspace in the Azure Portal, go to configuration page of the co
 Save private key to the ~/.ssh/ directory on your local computer; for instance open an editor for a new file and paste the key in:
 
 Linux:
+
     vi ~/.ssh/id_danielsctest_rsa 
 
 Windows:
+
     notepad C:\Users\<username>\.ssh\id_danielsctest_rsa
 
 The private key will look somewhat like this
