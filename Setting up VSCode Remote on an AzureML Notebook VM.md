@@ -1,13 +1,19 @@
 # Setting up VSCode Remote on an AzureML Notebook VM
 
+## 0. Prerequisite (Windows only)
+Install an OpenSSH compatible SSH client (https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) if one is not already present.
+Note: PuTTY is not supported on Windows since the ssh command must be in the path.
 
+## 1. Save the Notebook VM access information
 In the AzureML Workspace in the Azure Portal, go to configuration page of the compute target associated with your Notebook VM and find the IP Adress, ssh port, and ssh private key at the bottom: 
 ![](img/vm_ssh_config.png)
 
 Save private key to the ~/.ssh/ directory on your local computer; for instance open an editor for a new file and paste the key in:
 
-    vi ~/.ssh/id_danielsctest_rsa
+    vi ~/.ssh/id_danielsctest_rsa 
     
+    C:\Users\<username>\.ssh\id_danielsctest_rsa (Windows)
+
 The private key will look somewhat like this
     
     -----BEGIN RSA PRIVATE KEY-----
@@ -20,7 +26,8 @@ Change permissions on file to make sure only you can read the file (not sure if 
 
     chmod 600 ~/.ssh/id_danielsctest_rsa  
 
-Open the file ~/.ssh/config in an editor and add a new entry:
+## 2. Add the Notebook VM as a host
+Open the file ~/.ssh/config (C:\Users\<username>\.ssh\config on Windows) in an editor and add a new entry:
 
     Host danielsctest2
         HostName 13.69.56.51
@@ -61,6 +68,7 @@ Now you should be able to ssh to your Notebook VM using the shorthand you used a
     azureuser@danielsctestc7e12521ac:~$ 
 ```
 
+## 3. Install VS Code and connect to the Notebook VM
 Next install VS Code from here: https://code.visualstudio.com/ (Insiders is no longer required) and then install the Remote SSH Extension from here: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh.
 
 Now, click on the Remote-SSH icon on the left to show your SSH configurations, then right-click on the SSH host configuration you just created, and select 'Connect to Host in current Window'.
