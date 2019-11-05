@@ -5,52 +5,36 @@ Install an OpenSSH compatible SSH client (https://code.visualstudio.com/docs/rem
 Note: PuTTY is not supported on Windows since the ssh command must be in the path.
 
 ## 1. Save the Notebook VM access information
-In the AzureML Workspace in the Azure Portal, go to configuration page of the compute target associated with your Notebook VM and find the IP Adress, ssh port, and ssh private key at the bottom: 
-![](img/vm_ssh_config.png)
 
-Save private key to the ~/.ssh/ directory on your local computer; for instance open an editor for a new file and paste the key in:
+Note: this step needs to be updated since the Azure ML Portal UX has changed. Currently, you have to 
+1. find the VM that is backing your Notebook VM in the resource group where your workspace is located
+2. "Reset Password" for that VM 
+3. enable "Boot Diagnostics" for that VM
+4. log in through the "Serial Console" using the username and password you had used
+5. execute `sudo vi /home/azureuser/.ssh/authorized_keys` and add your public ssh key from your local machine to the end of the file
+6. From "Overview" remember the IP address of the VM
 
-Linux:
 
-    vi ~/.ssh/id_danielsctest_rsa 
+With the release of "Compute Instance" in late November 2019, this process will be simplified to a UI-based configuration in the Azure ML studio
 
-Windows:
-
-    notepad C:\Users\<username>\.ssh\id_danielsctest_rsa
-
-The private key will look somewhat like this
-    
-    -----BEGIN RSA PRIVATE KEY-----
-    MIIEpAIBAAKCAQEAr99EPm0P4CaTPT2KtBt+kpN3rmsNNE5dS0vmGWxIXq4vAWXD
-    .....
-    ewMtLnDgXWYJo0IyQ91ynOdxbFoVOuuGNdDoBykUZPQfeHDONy2Raw==
-    -----END RSA PRIVATE KEY-----
-
-Change permissions on file to make sure only you can read the file (not sure if this is needed on Windows)
-
-    chmod 600 ~/.ssh/id_danielsctest_rsa  
 
 ## 2. Add the Notebook VM as a host
-Open the file ~/.ssh/config (C:\Users\<username>\.ssh\config on Windows) in an editor and add a new entry:
+Open the file ~/.ssh/config (C:\Users\<username>\.ssh\config on Windows) on your local machine in an editor and add a new entry:
 
-    Host danielsctest2
-        HostName 13.69.56.51
-        Port 22
+    Host mynotebookvm
+        HostName <IP of the VM>
         User azureuser
-        IdentityFile ~/.ssh/id_danielsctest_rsa  
    
 Here some details on the fields:
 
 - `Host`: use whatever shorthand you like for the VM
 - `HostName`: This is the IP address of the VM pulled from the above configuration page
-- `Port`: This is the port shown on the above configuration page.
 - `User`: this needs to be `azureuser`
-- `IdentityFile`: should point to the file where you saved the privat key
 
 Now you should be able to ssh to your Notebook VM using the shorthand you used above.
 
 ```
-    MININT-LI90F99:git danielsc$ ssh danielsctest2
+    MININT-LI90F99:git danielsc$ ssh mynotebookvm
     Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.15.0-1041-azure x86_64)
 
     94 packages can be updated.
@@ -73,7 +57,7 @@ Now you should be able to ssh to your Notebook VM using the shorthand you used a
 ```
 
 ## 3. Install VS Code and connect to the Notebook VM
-Next install VS Code from here: https://code.visualstudio.com/ (Insiders is no longer required) and then install the Remote SSH Extension from here: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh.
+Next install VS Code from here: https://code.visualstudio.com/ and then install the Remote SSH Extension from here: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh.
 
 Now, click on the Remote-SSH icon on the left to show your SSH configurations, then right-click on the SSH host configuration you just created, and select 'Connect to Host in current Window'.
 
