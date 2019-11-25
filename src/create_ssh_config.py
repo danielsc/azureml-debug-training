@@ -22,7 +22,7 @@ def create_RSA_file(IP_address,RSA_key):
     f= open(dir_path,"w")
     for line in RSA_key:
         f.write(line)
-    f.close
+    f.close()
     return dir_path
     
 def create_config_file(IP_address,RSA_key):
@@ -30,7 +30,7 @@ def create_config_file(IP_address,RSA_key):
     dir_path = os.path.join(home,".ssh","config")
     f= open(dir_path,"a")
     f.write(config_text)
-    f.close
+    f.close()
     
 def run():
     create_ssh_folder()
