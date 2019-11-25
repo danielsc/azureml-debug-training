@@ -6,45 +6,63 @@ Note: PuTTY is not supported on Windows since the ssh command must be in the pat
 
 ## (Optional) Create SSH config file with a script
 
-1. Navigate to `src` and run the script with python `create_ssh_config.py`
+1. Download the [script](https://github.com/danielsc/azureml-debug-training/blob/master/src/create_ssh_config.py) and run the script on your local machine with `python create_ssh_config.py`
 2. For your **IP Address**: 
-    -  Find VM in https://ml.azure.com/, Click Compute and Click the VM you want the SSH into. You should we a page with the title "Compute Details" with all your VM details.
-    -  Click the link "Resource ID" for that VM 
+    -  Find VM in https://ml.azure.com/, Click **Compute** and Click the VM you want the SSH into. You should we a page with the title "Compute Details" with all your VM details.
+    -  Click the link under "Resource ID" for that VM 
+    ![](img/vm_ipaddress.png)
     -  Copy the "Public IP address", that is your IP Address value
     -  Paste value in the terminal
-3. For your **RSA Key**: 
-    -  Find VM in https://ml.azure.com/, Click Compute and Click the VM you want the SSH into. You should we a page with the title "Compute Details" with all your VM details.
+3. For your **Private Key**: 
+    -  Find VM in https://ml.azure.com/, Click **Compute** and Click the VM you want the SSH into. You should we a page with the title "Compute Details" with all your VM details.
+    ![](img/vm_ssh_config_ws2.png)
     -  Copy the RSA Key "Private key" for that VM 
     -  Paste value in the terminal
     -  Press `Ctrl+z` and Enter(Windows) or `Ctrl+d` and Enter(Mac/Linux) to confirm Private Key
 3. Skip to the **Install VS Code and connect to the Notebook VM** section of this document. Your VM should appear in VSCode with the IP     address as the name.
 
 ## 1. Save the Notebook VM access information
+In the AzureML Workspace in the Azure Portal, go to configuration page of the compute target associated with your Notebook VM and find the IP Adress, ssh port, and ssh private key at the bottom: 
+![](img/vm_ssh_config_ws2.png)
 
-Note: this step needs to be updated since the Azure ML Portal UX has changed. Currently, you have to 
-1. find the VM that is backing your Notebook VM in the resource group where your workspace is located
-2. "Reset Password" for that VM 
-3. enable "Boot Diagnostics" for that VM
-4. log in through the "Serial Console" using the username and password you had used
-5. execute `sudo vi /home/azureuser/.ssh/authorized_keys` and add your public ssh key from your local machine to the end of the file
-6. From "Overview" remember the IP address of the VM
+Save private key to the ~/.ssh/ directory on your local computer; for instance open an editor for a new file and paste the key in:
 
+Linux:
 
-With the release of "Compute Instance" in late November 2019, this process will be simplified to a UI-based configuration in the Azure ML studio
+    vi ~/.ssh/id_mynotebookvm_rsa 
 
+Windows:
+
+    notepad C:\Users\<username>\.ssh\id_mynotebookvm_rsa
+
+The private key will look somewhat like this
+    
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEpAIBAAKCAQEAr99EPm0P4CaTPT2KtBt+kpN3rmsNNE5dS0vmGWxIXq4vAWXD
+    .....
+    ewMtLnDgXWYJo0IyQ91ynOdxbFoVOuuGNdDoBykUZPQfeHDONy2Raw==
+    -----END RSA PRIVATE KEY-----
+
+Change permissions on file to make sure only you can read the file (not sure if this is needed on Windows)
+
+    chmod 600 ~/.ssh/id_mynotebookvm_rsa  
 
 ## 2. Add the Notebook VM as a host
-Open the file ~/.ssh/config (C:\Users\<username>\.ssh\config on Windows) on your local machine in an editor and add a new entry:
+Open the file ~/.ssh/config (C:\Users\<username>\.ssh\config on Windows) in an editor and add a new entry:
 
     Host mynotebookvm
-        HostName <IP of the VM>
+        HostName 13.69.56.51
+        Port 22
         User azureuser
+        IdentityFile ~/.ssh/id_mynotebookvm_rsa  
    
 Here some details on the fields:
 
 - `Host`: use whatever shorthand you like for the VM
 - `HostName`: This is the IP address of the VM pulled from the above configuration page
+- `Port`: This is the port shown on the above configuration page.
 - `User`: this needs to be `azureuser`
+- `IdentityFile`: should point to the file where you saved the privat key
 
 Now you should be able to ssh to your Notebook VM using the shorthand you used above.
 
