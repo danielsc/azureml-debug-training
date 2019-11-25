@@ -4,6 +4,21 @@
 Install an OpenSSH compatible SSH client (https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) if one is not already present.
 Note: PuTTY is not supported on Windows since the ssh command must be in the path.
 
+## (Optional) Create SSH config file with a script
+
+1. Navigate to `src` and run the script with python `create_ssh_config.py`
+2. For your **IP Address**: 
+    -  Find VM in https://ml.azure.com/, Click Compute and Click the VM you want the SSH into. You should we a page with the title "Compute Details" with all your VM details.
+    -  Click the link "Resource ID" for that VM 
+    -  Copy the "Public IP address", that is your IP Address value
+    -  Paste value in the terminal
+3. For your **RSA Key**: 
+    -  Find VM in https://ml.azure.com/, Click Compute and Click the VM you want the SSH into. You should we a page with the title "Compute Details" with all your VM details.
+    -  Copy the RSA Key "Private key" for that VM 
+    -  Paste value in the terminal
+    -  Press `Ctrl+z` and Enter(Windows) or `Ctrl+d` and Enter(Mac/Linux) to confirm Private Key
+3. Skip to the **Install VS Code and connect to the Notebook VM** section of this document. Your VM should appear in VSCode with the IP     address as the name.
+
 ## 1. Save the Notebook VM access information
 
 Note: this step needs to be updated since the Azure ML Portal UX has changed. Currently, you have to 
