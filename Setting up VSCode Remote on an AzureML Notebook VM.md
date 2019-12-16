@@ -94,7 +94,7 @@ Next install VS Code from here: https://code.visualstudio.com/ and then install 
 
 Now, click on the Remote-SSH icon on the left to show your SSH configurations, then right-click on the SSH host configuration you just created, and select 'Connect to Host in current Window'.
 
-From here on, you are entirely working on the Notebook VM and you can now edit, debug, use git, use extensions, etc. -- just like you can with your local VSCode.
+From here on, you are entirely working on the Notebook VM and you can now edit, debug, use git, use extensions, etc. -- just like you can with your local VSCode. Notebook VM files are stored in `/home/azureuser/cloudfiles/code` and `/home/azureuser/R` for R related files
 
 Have fun!
 
