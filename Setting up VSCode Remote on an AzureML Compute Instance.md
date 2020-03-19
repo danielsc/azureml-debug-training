@@ -7,7 +7,7 @@ Note: PuTTY is not supported on Windows since the ssh command must be in the pat
 ## 1. Generate Public/Private SSH keys on local computer
 Linux:
 
-Follow guide here: (https://www.maketecheasier.com/generate-public-private-ssh-key/)
+Follow guide here: https://www.maketecheasier.com/generate-public-private-ssh-key/
 
 Open the file manager and navigate to the .ssh directory. You should see two files: id_rsa and id_rsa.pub.
 The **id_rsa.pub** will contain the public key
@@ -57,7 +57,7 @@ When creating Compute Instance, enable SSH and paste the Public Key you generate
     -  Go to https://ml.azure.com/, Click **Compute** and Click the SSH link. You should see a **SSH Details** pop out. 
     ![](img/vm_compute_ssh.png)
 3. For your **Private Key**: 
-    -  Find the private key you generate ([Follow steps below](#1.-Save-the-Notebook-VM-access-information)), it was generated when you created an SSH key for your Compute Instance.
+    -  Find the private key you generate ([Follow steps abive](#1.-Generate-Public/Private-SSH-keys-on-local-computer)), it was generated when you created an SSH key for your Compute Instance.
     -  Copy the RSA Key "Private key" for that VM 
     -  Paste value in the terminal
     -  Press `Ctrl+z` and Enter(Windows) or `Ctrl+d` and Enter(Mac/Linux) to confirm Private Key
