@@ -26,7 +26,7 @@ def create_RSA_file(IP_address,RSA_key):
     return dir_path
     
 def create_config_file(IP_address,RSA_key):
-    config_text = "\n#"+"---"*10 + "\n" + "Host " + IP_address + "\n      HostName " + IP_address + " \n      Port 22 \n      User azureuser \n      IdentityFile " + create_RSA_file(IP_address,RSA_key) + "\n"
+    config_text = "\n#"+"---"*10 + "\n" + "Host " + IP_address + "\n      HostName " + IP_address + " \n      Port 50000 \n      User azureuser \n      IdentityFile " + create_RSA_file(IP_address,RSA_key) + "\n"
     dir_path = os.path.join(home,".ssh","config")
     f= open(dir_path,"a")
     f.write(config_text)
