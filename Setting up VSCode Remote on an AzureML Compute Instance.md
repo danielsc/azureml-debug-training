@@ -57,7 +57,7 @@ When creating Compute Instance, enable SSH and paste the Public Key you generate
     -  Go to https://ml.azure.com/, Click **Compute** and Click the SSH link. You should see a **SSH Details** pop out. 
     ![](img/vm_compute_ssh.png)
 3. For your **Private Key**: 
-    -  Find the private key you generate ([Follow steps abive](#1.-Generate-Public/Private-SSH-keys-on-local-computer)), it was generated when you created an SSH key for your Compute Instance.
+    -  Find the private key you generate ([Follow steps above](#1.-Generate-Public/Private-SSH-keys-on-local-computer)), it was generated when you created an SSH key for your Compute Instance.
     -  Copy the RSA Key "Private key" for that VM 
     -  Paste value in the terminal
     -  Press `Ctrl+z` and Enter(Windows) or `Ctrl+d` and Enter(Mac/Linux) to confirm Private Key
